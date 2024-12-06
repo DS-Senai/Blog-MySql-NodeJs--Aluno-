@@ -16,8 +16,21 @@ const port = 8080
 
 
 
+
+app.get('/#',function(req,res){
+    res.sendFile(__dirname+"/js/script.js")
+})
+
 app.get('/',function(req,res){
-    res.sendFile(__dirname + "/index.html")
+    res.sendFile(__dirname + "/views/layouts/index.html")
+})
+
+app.get('/cadastro',function(req,res){
+    res.sendFile(__dirname + "/views/partials/cadastro.handlebars")
+})
+
+app.get('/add',function(req,res){
+    res.sendFile(__dirname + "/views/partials/add.handlebars")
 })
 
 
