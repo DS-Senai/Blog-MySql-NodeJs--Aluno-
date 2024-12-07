@@ -1,10 +1,8 @@
-document.querySelector(".noturno").addEventListener("click", function () {
-    if (document.querySelector("body").style.backgroundColor == 'black') {
-        document.querySelector("body").style.backgroundColor = 'white';
-        document.querySelector("body").style.color = 'black';
-      
-    } else {
-        document.querySelector("body").style.backgroundColor = 'black';
-        document.querySelector("body").style.color = 'white';        
-    }
+// Seleciona o body e adiciona uma classe "dark-mode" quando clicado no botão
+document.addEventListener("DOMContentLoaded", function () {
+    const darkButton = document.getElementById("dark-mode-toggle");
+
+    darkButton.addEventListener("click", function () {
+        document.body.classList.toggle("dark-mode");
+    });
 });

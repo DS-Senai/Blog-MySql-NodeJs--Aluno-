@@ -1,40 +1,79 @@
-/**
- * Express - npm install express
- * Sequelize - npm install sequelize
- * nodemom - npm install nodemom
- * Body-parser - npm install body-parser
- * handlebars - npm install handlebars
- */
+const express = require("express");
+const app = express();
+const bodyParser = require("body-parser");
+const handlebars = require("express-handlebars");
 
+// Configurar o Handlebars
+app.engine('handlebars', handlebars.engine({
+    defaultLayout: 'main',
+    runtimeOptions: {
+        allowProtoPropertiesByDefault: true,
+        allowProtoMethodsByDefault: true
+    }
+}));
+app.set('view engine', 'handlebars');
 
-const express = require('express')
-const { dirname } = require('path')
-const app = express()
-const path = require('path')
-const port = 8080
+// Configurar Body Parser
+app.use(bodyParser.urlencoded({ extended: false }));
+app.use(bodyParser.json());
 
+// Configurar arquivos estáticos
+app.use(express.static("assets"));
 
+const port = 8083;
+app.listen(port, () => {
+    console.log("Servidor rodando na URL http://localhost:" + port);
+});
 
+const Post = require('./models/Post');
 
+// Formulário de cadastro
+app.get('/cadastro', (req, res) => {
+    res.render('formulario');
+});
 
-app.get('/#',function(req,res){
-    res.sendFile(__dirname+"/js/script.js")
-})
+// CREATE - Adicionar novo post
+app.post('/add', (req, res) => {
+    Post.create({
+        titulo: req.body.titulo,
+        conteudo: req.body.conteudo
+    }).then(() => {
+        res.render('add');
+    }).catch(err => {
+        res.send("Erro ao criar post: " + err);
+    });
+});
 
-app.get('/',function(req,res){
-    res.sendFile(__dirname + "/views/layouts/index.html")
-})
+// READ - Exibir posts
+app.get('/', (req, res) => {
+    Post.findAll().then(posts => {
+        res.render('home', { posts: posts });
+    });
+});
 
-app.get('/cadastro',function(req,res){
-    res.sendFile(__dirname + "/views/partials/cadastro.handlebars")
-})
+// DELETE - Remover post
+app.get('/deletar/:id', (req, res) => {
+    Post.destroy({ where: { id: req.params.id } }).then(() => {
+        res.render('delete', { msg: "Postagem deletada com sucesso!" });
+    }).catch(err => {
+        res.render('delete', { msg: "Erro ao deletar postagem: " + err });
+    });
+});
 
-app.get('/add',function(req,res){
-    res.sendFile(__dirname + "/views/partials/add.handlebars")
-})
+// EDITAR - Pegar dados para edição
+app.get('/edit/:id', (req, res) => {
+    Post.findOne({ where: { id: req.params.id } }).then(post => {
+        res.render('editposts', { post: post });
+    });
+});
 
-
-
-app.listen(8080,function(){
-    console.log("Servidor conectado  http://localhost:"+port)
-})
+// UPDATE - Salvar edições
+app.post('/edit', (req, res) => {
+    Post.findOne({ where: { id: req.body.id } }).then(post => {
+        post.titulo = req.body.titulo;
+        post.conteudo = req.body.conteudo;
+        return post.save();
+    }).then(() => {
+        res.redirect('/');
+    });
+});
