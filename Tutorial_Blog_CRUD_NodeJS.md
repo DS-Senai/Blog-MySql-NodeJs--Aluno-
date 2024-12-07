@@ -147,7 +147,8 @@
    app.post('/edit', (req, res) => {
        Post.findOne({ where: { id: req.body.id } }).then(post => {
            post.titulo = req.body.titulo;
-           post.conteudo = req.body.conteudo;
+           post.conteu
+           do = req.body.conteudo;
            return post.save();
        }).then(() => {
            res.redirect('/');
