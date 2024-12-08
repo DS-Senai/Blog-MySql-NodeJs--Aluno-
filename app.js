@@ -1,31 +1,19 @@
-// Iniciar o projeto: node app.js
-
-
-// Criar projeto utiliza o npm init -y
-// Instalar Dependencias:
-
-// Express - npm install express --save
-// Sequelize - npm install sequelize --save
-// Nodemon - npm install
-// Body-parser
-// handlebars
-
-// console.log("Tudo ok")
-
 const express = require("express");
 const app = express();
 const bodyParser = require("body-parser");
-const handlebars = require("express-handlebars");
+const expressHandlebars = require('express-handlebars');
+const path = require('path');
 
-// Configurar o Handlebars
-app.engine('handlebars', handlebars.engine({
+app.engine(
+  'handlebars',
+  expressHandlebars({
+    partialsDir: path.join(__dirname, 'views', 'partials'), // Verifique este caminho
+    layoutsDir: path.join(__dirname, 'views', 'layouts'),
     defaultLayout: 'main',
-    runtimeOptions: {
-        allowProtoPropertiesByDefault: true,
-        allowProtoMethodsByDefault: true
-    }
-}));
+  })
+);
 app.set('view engine', 'handlebars');
+
 
 // Configurar Body Parser
 app.use(bodyParser.urlencoded({ extended: false }));
