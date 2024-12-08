@@ -1,0 +1,29 @@
+
+<div class="container">
+    <h1>Contato</h1>
+    <p>Se você deseja entrar em contato com o criador deste blog, preencha o formulário abaixo ou envie um e-mail diretamente para <strong>yurimat2006@gmail.com</strong></p>
+
+    <h2>Informações sobre o Criador:</h2>
+    <p><strong>Nome:</strong> Yuri Matheus</p>
+    <p><strong>Profissão:</strong> Desenvolvedor Web</p>
+    <p><strong>País:</strong> Brasil</p>
+
+    <hr>
+
+    <h2>Formulário de Contato</h2>
+    <form action="/send-message" method="POST">
+        <div class="form-group">
+            <label for="name">Nome:</label>
+            <input type="text" name="name" id="name" class="form-control" required>
+        </div>
+        <div class="form-group">
+            <label for="email">E-mail:</label>
+            <input type="email" name="email" id="email" class="form-control" required>
+        </div>
+        <div class="form-group">
+            <label for="message">Mensagem:</label>
+            <textarea name="message" id="message" class="form-control" rows="4" required></textarea>
+        </div>
+        <button type="submit" class="btn btn-primary">Enviar Mensagem</button>
+    </form>
+</div>

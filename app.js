@@ -34,6 +34,10 @@ app.get('/cadastro', (req, res) => {
     res.render('formulario');
 });
 
+app.get('/contato', (req, res) => {
+  res.render('contato'); // A página de contato será renderizada
+});
+
 // CREATE - Adicionar novo post
 app.post('/add', (req, res) => {
     Post.create({
