@@ -2,14 +2,16 @@ const express = require("express");
 const app = express();
 const bodyParser = require("body-parser");
 const handlebars = require("express-handlebars");
+const path = require('path');
 
 // Configurar o Handlebars
 app.engine('handlebars', handlebars.engine({
-    defaultLayout: 'main',
-    runtimeOptions: {
-        allowProtoPropertiesByDefault: true,
-        allowProtoMethodsByDefault: true
-    }
+  defaultLayout: 'main',
+  runtimeOptions: {
+      allowProtoPropertiesByDefault: true,
+      allowProtoMethodsByDefault: true
+  },
+  partialsDir: path.join(__dirname, 'views/partials')  
 }));
 app.set('view engine', 'handlebars');
 
