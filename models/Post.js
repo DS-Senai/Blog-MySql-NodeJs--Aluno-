@@ -1,6 +1,13 @@
 const db = require('./db')
 
 const Post = db.sequelize.define('posts', {
+
+    id: {
+        type: db.Sequelize.INTEGER,
+        autoIncrement: true,
+        primaryKey: true
+    },
+
     titulo: {
         type: db.Sequelize.STRING
     },
@@ -9,6 +16,7 @@ const Post = db.sequelize.define('posts', {
     } 
 })
 
-Post.sync({force: true})
+//Post.sync({force: true})
+
 
 module.exports = Post
