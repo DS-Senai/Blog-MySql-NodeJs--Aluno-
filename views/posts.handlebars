@@ -1,2 +1,12 @@
+<h1 class="posth1">Posts</h1>
 
 
+{{#each posts}}
+  <div class="post">
+    <h2>{{this.titulo}}</h2>
+    <p>{{this.conteudo}}</p>
+    <p class="data"><small>Publicado em: {{this.createdAt}}</small></p>
+  </div>
+{{else}}
+  <p class="postIndisp">Não há posts disponíveis. <a href="/cadastro">Crie seu primeiro post</a></p>
+{{/each}}

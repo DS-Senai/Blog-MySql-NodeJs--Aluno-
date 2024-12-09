@@ -10,7 +10,50 @@ body {
     margin-bottom: 20px;
 }
 
-.navbar{
+.navbar {
     display: flex;
     list-style-type: none;
+
+    width: 100%;
+}
+
+.nav{
+    margin:  0 40px 0 40px;
+}
+
+.nav a{
+    color: #333;
+    font-size: 23px;
+}
+
+.nav a:hover{
+    color: #ff0404b2;
+}
+
+.post{
+    margin-left: 40px;
+}
+
+.posth1{
+    text-align: center;
+    color: #218838;
+}
+
+.sobre{
+    text-align: center;
+    margin: 0 60px 0 60px;
+}
+
+.sobre h1{
+    margin-bottom: 25px;
+    color: #218838;
+}
+
+.data{
+    color: rgb(0, 119, 255);
+}
+
+.postIndisp{
+    margin-top: 40px;
+    text-align: center;
 }

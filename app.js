@@ -81,3 +81,15 @@ app.post('/edit', (req, res) => {
         res.redirect('/');
     });
 });
+
+app.get('/about', (req, res) => {
+    res.render('about');
+});
+
+app.get('/posts', (req, res) => {
+    Post.findAll().then(posts => {
+        res.render('posts', { posts: posts });
+    }).catch(err => {
+        res.status(500).send("Erro ao buscar posts: " + err);
+    });
+});
