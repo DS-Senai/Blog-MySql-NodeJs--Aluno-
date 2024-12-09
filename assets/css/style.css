@@ -9,3 +9,8 @@ body {
 .button {
     margin-bottom: 20px;
 }
+
+.navbar{
+    display: flex;
+    list-style-type: none;
+}

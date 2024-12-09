@@ -28,6 +28,7 @@ app.listen(port, () => {
 
 //<<<<<<<<<<<<<ROTAS>>>>>>>>>>>>>>
 
+
 const Post = require('./models/Post');
 
 // Formulário de cadastro
@@ -80,4 +81,3 @@ app.post('/edit', (req, res) => {
         res.redirect('/');
     });
 });
-
