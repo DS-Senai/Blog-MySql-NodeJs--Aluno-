@@ -1,6 +1,7 @@
 
 # Tutorial para Criação de um Blog com CRUD utilizando Node.js, Express, Sequelize, e Handlebars
 
+
 ## Configuração Inicial do Projeto
 
 1. **Instalar as dependências necessárias:**
