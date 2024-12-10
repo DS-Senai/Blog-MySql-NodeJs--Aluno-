@@ -3,15 +3,38 @@ const app = express();
 const bodyParser = require("body-parser");
 const handlebars = require("express-handlebars");
 
+
+// // Configurar o Handlebars
+// app.engine('handlebars', handlebars.engine({
+//     defaultLayout: 'main',
+//     runtimeOptions: {
+//         allowProtoPropertiesByDefault: true,
+//         allowProtoMethodsByDefault: true
+//     }
+// }));
+// app.set('view engine', 'handlebars');
+
 // Configurar o Handlebars
 app.engine('handlebars', handlebars.engine({
     defaultLayout: 'main',
     runtimeOptions: {
         allowProtoPropertiesByDefault: true,
         allowProtoMethodsByDefault: true
-    }
+    },
+    partialsDir: __dirname + '/views/partials/' // Diretório das partials
 }));
 app.set('view engine', 'handlebars');
+
+
+
+
+
+
+
+
+
+
+
 
 // Configurar Body Parser
 app.use(bodyParser.urlencoded({ extended: false }));
