@@ -1,19 +1,17 @@
 const express = require("express");
 const app = express();
 const bodyParser = require("body-parser");
-const expressHandlebars = require('express-handlebars');
-const path = require('path');
+const handlebars = require("express-handlebars");
 
-app.engine(
-  'handlebars',
-  expressHandlebars({
-    partialsDir: path.join(__dirname, 'views', 'partials'), // Verifique este caminho
-    layoutsDir: path.join(__dirname, 'views', 'layouts'),
+// Configurar o Handlebars
+app.engine('handlebars', handlebars.engine({
     defaultLayout: 'main',
-  })
-);
+    runtimeOptions: {
+        allowProtoPropertiesByDefault: true,
+        allowProtoMethodsByDefault: true
+    }
+}));
 app.set('view engine', 'handlebars');
-
 
 // Configurar Body Parser
 app.use(bodyParser.urlencoded({ extended: false }));
@@ -26,6 +24,8 @@ const port = 8083;
 app.listen(port, () => {
     console.log("Servidor rodando na URL http://localhost:" + port);
 });
+
+// Rotas
 
 const Post = require('./models/Post');
 
@@ -77,5 +77,19 @@ app.post('/edit', (req, res) => {
         return post.save();
     }).then(() => {
         res.redirect('/');
+    });
+});
+
+// Rota para a página "Sobre"
+app.get('/sobre', (req, res) => {
+    res.render('sobre');  // Renderiza o arquivo "sobre.handlebars"
+});
+
+// Rota para listar todos os posts
+app.get('/posts', (req, res) => {
+    Post.findAll().then(posts => {
+        res.render('posts', { posts: posts });  // Renderiza a página de posts
+    }).catch(err => {
+        res.send("Erro ao carregar posts: " + err);
     });
 });
