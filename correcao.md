@@ -1,10 +1,12 @@
-### Correção
+### Correções
 
-- Faltou apenas excluir o arquivo index.html, remover os códigos comentado sem utilidade
+- **Faltou remover o `index.html` e códigos comentados sem utilidade**  
+  O arquivo `index.html` não é mais necessário e os códigos comentados devem ser removidos para melhorar a clareza e a legibilidade do código.
+
+- **Faltou o menu, que é uma parte do Handlebars**  
+  O menu superior, que deveria ser incluído nas views do Handlebars, não está presente. Isso afeta a navegação da aplicação e deve ser adicionado.
 
 Com exceção da correção mencionada acima, a aplicação está funcional e segue todos os itens abaixo:
-
----
 
 #### Itens Verificados
 
