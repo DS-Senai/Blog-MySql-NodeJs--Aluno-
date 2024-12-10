@@ -1,30 +1,3 @@
-const express = require("express");
-const app = express();
-const bodyParser = require("body-parser");
-const handlebars = require("express-handlebars");
-
-// Configurar o Handlebars
-app.engine('handlebars', handlebars.engine({
-    defaultLayout: 'main',
-    runtimeOptions: {
-        allowProtoPropertiesByDefault: true,
-        allowProtoMethodsByDefault: true
-    }
-}));
-app.set('view engine', 'handlebars');
-
-// Configurar Body Parser
-app.use(bodyParser.urlencoded({ extended: false }));
-app.use(bodyParser.json());
-
-// Configurar arquivos estáticos
-app.use(express.static("assets"));
-
-const port = 8083;
-app.listen(port, () => {
-    console.log("Servidor rodando na URL http://localhost:" + port);
-});
-
 const Post = require('./models/Post');
 
 // Formulário de cadastro
