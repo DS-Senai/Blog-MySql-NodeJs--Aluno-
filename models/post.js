@@ -60,3 +60,4 @@ const post = sequelize.define('post', {
 module.exports = Post;
 
 
+
