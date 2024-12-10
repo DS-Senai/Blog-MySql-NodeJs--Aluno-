@@ -3,38 +3,15 @@ const app = express();
 const bodyParser = require("body-parser");
 const handlebars = require("express-handlebars");
 
-
-// // Configurar o Handlebars
-// app.engine('handlebars', handlebars.engine({
-//     defaultLayout: 'main',
-//     runtimeOptions: {
-//         allowProtoPropertiesByDefault: true,
-//         allowProtoMethodsByDefault: true
-//     }
-// }));
-// app.set('view engine', 'handlebars');
-
 // Configurar o Handlebars
 app.engine('handlebars', handlebars.engine({
     defaultLayout: 'main',
     runtimeOptions: {
         allowProtoPropertiesByDefault: true,
         allowProtoMethodsByDefault: true
-    },
-    partialsDir: __dirname + '/views/partials/' // Diretório das partials
+    }
 }));
 app.set('view engine', 'handlebars');
-
-
-
-
-
-
-
-
-
-
-
 
 // Configurar Body Parser
 app.use(bodyParser.urlencoded({ extended: false }));
@@ -49,10 +26,10 @@ app.listen(port, () => {
 });
 
 
-//ROTAS
+//<<<<<<<<<<<<<ROTAS>>>>>>>>>>>>>>
 
 
-const Post = require('./models/Post');
+const Post = require('./models/post');
 
 // Formulário de cadastro
 app.get('/cadastro', (req, res) => {
@@ -104,3 +81,48 @@ app.post('/edit', (req, res) => {
         res.redirect('/');
     });
 });
+
+app.get('/about', (req, res) => {
+    res.render('about');
+});
+
+app.get('/posts', (req, res) => {
+    Post.findAll().then(posts => {
+        res.render('posts', { posts: posts });
+    }).catch(err => {
+        res.status(500).send("Erro ao buscar posts: " + err);
+    });
+});
+
+
+
+
+
+//teste-1
+
+
+// // app.js
+// const express = require('express');
+// const app = express();
+// const bodyParser = require('body-parser');
+// const postRoutes = require('./routes/postRoutes');
+// const sequelize = require('./config/db');
+
+// // Middleware
+// app.use(bodyParser.json()); // Para analisar o corpo das requisições em JSON
+
+// // Rotas
+// app.use('/posts', postRoutes);
+
+// // Iniciar o servidor e sincronizar com o banco de dados
+// sequelize.sync()
+//   .then(() => {
+//     app.listen(8083, () => {
+//       console.log('Servidor rodando na URL http://localhost:8083');
+//     });
+//   })
+//   .catch((error) => {
+//     console.error('Erro ao conectar com o banco de dados:', error);
+//   });
+
+
