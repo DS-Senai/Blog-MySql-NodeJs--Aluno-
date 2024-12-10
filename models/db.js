@@ -1,7 +1,7 @@
 const Sequelize = require('sequelize'); // Importação do Sequelize
 
-// const senha = '12345hH@';
-const senha = 'admin';
+const senha = '12345hH@';
+// const senha = 'admin';
 
 // Configuração da conexão com o banco de dados
 const sequelize = new Sequelize('sequelize','root',senha, {
