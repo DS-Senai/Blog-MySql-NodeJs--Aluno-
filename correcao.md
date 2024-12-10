@@ -6,6 +6,9 @@
 - **Faltou definir a rota "contato"**  
   A rota para a página de "contato" não foi definida, o que impede o acesso correto a essa funcionalidade. Ela precisa ser implementada para que a aplicação funcione como esperado.
 
+- **Faltou criar a branch no repositório base**  
+  Não havia uma branch específica para a correção no repositório base. Para corrigir isso, foi necessário criar uma nova branch para realizar as alterações de forma isolada e organizada.
+
 
 Com exceção da correção mencionada acima, a aplicação está funcional e segue todos os itens abaixo:
 
