@@ -1,0 +1,21 @@
+<div class="container">
+    <h1>Blog do Lucas</h1>
+    <p>Meus ultimos posts:</p>
+    <a href="/cadastro"><button class="btn btn-primary" id="new-post-button">Novo POST +</button></a>
+    <hr>
+
+    {{#each posts}}
+    <small>{{createAt}}</small>
+    <div class="post-container">
+        <div class="content">
+            <h3>{{{titulo}}}</h3>
+            <p>{{{conteudo}}}</p>
+        </div>
+        <div class="actions">
+            <a href="/deletar/{{id}}" class="button-delete"><button class="btn btn-danger">Deletar</button></a>
+             <a href="/edit/{{id}}" class="button-edit"><button class="btn btn-success">EDITAR</button></a>
+        </div>
+    </div>
+    <hr>
+    {{/each}}
+</div>

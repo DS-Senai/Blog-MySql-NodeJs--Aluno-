@@ -1,0 +1,16 @@
+<div class="container">
+    <form action="/edit" method="POST">
+        <input type="hidden" name="id" value="{{post.id}}">
+
+        <div class="container-edit">
+            <h2 id="titulo">Titulo: </h2>
+            <input type="text" name="titulo" value="{{post.titulo}}">
+        </div>
+
+        <div class="container-edit">
+            <h2 id="conteudo">Conteúdo: </h2>
+            <textarea class="form-control" name="conteudo" id="">{{post.conteudo}}</textarea></br>
+        </div>
+        <button type="submit" class="btn btn-success">SALVAR</button>
+    </form>
+</div>
