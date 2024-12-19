@@ -2,7 +2,7 @@ const Sequelize = require('sequelize'); // Importação do Sequelize
 
 const senha = "admin"
 // Configuração da conexão com o banco de dados
-const sequelize = new Sequelize('banco_de_dados_crud','root',senha, {
+const sequelize = new Sequelize('sequelize','miqueias',senha, {
     host: "localhost",
     dialect:'mysql'
 })
